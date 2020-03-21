@@ -66,3 +66,20 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+
+
+# Electron
+
+Install uuid
+
+`npm install --save uuid`
+
+`npm install 
+For the electron version we need to run 2 scripts `npm start` and `npm run electron-dev` that simply run `ELECTRON_DISABLE_SECURITY_WARNINGS=true ELECTRON_START_URL=http://localhost:3000/ electron .`
+
+
+However ig you install
+`npm install --save-dev electron concurrently wait-on`
+

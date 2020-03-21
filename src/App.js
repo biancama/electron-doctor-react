@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import SideBar from "./components/SideBar";
+import CreateAppointment from "./components/appointment/Create";
+import AppointmentList from "./components/appointment/List";
+import TodayAppointments from "./components/appointment/Today";
+
+
+
+class App extends Component {
+
+  state = {
+    view: "today"
+  };
+
+  renderView() {
+    if (this.state.view === "create") return <CreateAppointment />;
+    else if (this.state.view === "list") return <AppointmentList />;
+    else return <TodayAppointments />;
+  }
+  render() {
+    return (
+      <div>
+        <SideBar onViewChange={view => this.setState({ view })} />
+        {this.renderView()}
+      </div>
+          );
+  }
 }
 
 export default App;
