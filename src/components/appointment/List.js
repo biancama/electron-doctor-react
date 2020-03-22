@@ -4,7 +4,8 @@ const { ipcRenderer } = window.require('electron');
 
 class List extends Component {
     state = {
-        appointments: []
+        appointments: [],
+        filter: ""
     };
 
     componentDidMount() {
@@ -21,9 +22,15 @@ class List extends Component {
           <div>
             <h3>Appointments' List</h3>
             <hr />
-    
+            <div>
+              <label htmlFor="filter">Filter: </label>
+              <input type="text" name="filter" placeholder="InsertName" value={this.state.filter} onChange={e => this.setState({ filter: e.target.value })} />
+            </div>
+
+            <hr />
+
             {this.state.appointments.map(appointment => {
-              //if (appointment.name.includes(this.state.filter))
+              if (appointment.name.includes(this.state.filter))
               return (
                 <div key={appointment.id}>
                   <p>Name: {appointment.name}</p>
@@ -35,7 +42,7 @@ class List extends Component {
                   <hr />
                 </div>
               );
-              //else return null;
+              else return null;
             })}
           </div>
         );

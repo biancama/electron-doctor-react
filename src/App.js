@@ -5,7 +5,9 @@ import SideBar from "./components/SideBar";
 import CreateAppointment from "./components/appointment/Create";
 import AppointmentList from "./components/appointment/List";
 import TodayAppointments from "./components/appointment/Today";
-
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 
 
 class App extends Component {
@@ -21,11 +23,17 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-        <SideBar onViewChange={view => this.setState({ view })} />
-        {this.renderView()}
-      </div>
-          );
+      <Container>
+        <Row>
+          <Col md="3">
+            <SideBar onViewChange={view => this.setState({ view })} selected={ this.state.view}/>
+          </Col>
+          <Col md="9">
+            {this.renderView()}
+          </Col>
+        </Row>
+      </Container>
+    );
   }
 }
 
